@@ -1,0 +1,26 @@
+<div class="background">
+
+  <div class="login">
+   
+    <div class="local">
+      <h1>Local login</h1>
+      <hr />
+      <form action="">
+        <p class="emailText">Email</p>
+        <input class="email" type="text">
+        <p class="passwordText">Password</p>
+        <input class="password" type="password">
+        <br>
+        <button class="loginButton" type="submit" label="login" [routerLink]="['/home']">Login</button>
+      </form>
+    </div>
+    <div class="external">
+      <h1>External login</h1>
+      <hr />
+      <h5>{{resultMessage}}</h5>
+      <button (click)="logInWithGoogle('Google')"> Google Login </button>
+      <button (click)="signOut()" class="btn btn-success Facebook">Sign Out</button>
+    </div>
+  </div>
+
+</div>

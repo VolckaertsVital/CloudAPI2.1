@@ -1,0 +1,48 @@
+
+<h1 id="tableLabel">Airsoft Details</h1>
+
+
+<p *ngIf="!airsofts"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="airsofts">
+  <tr>
+    <th>{{ airsoft.Name }}</th>
+
+  </tr>
+  <tr>
+    <td>{{ airsoft.Price }}</td>
+  </tr>
+  <tr>
+    <td>{{ airsoft.Brand }}</td>
+  </tr>
+  <tr>
+    <td>{{ airsoft.Type }}</td>
+  </tr>
+  <tr>
+    <td>{{ airsoft.MagazineSize }}</td>
+  </tr>
+  <tr>
+    <td>{{ airsoft.FPS }}</td>
+  </tr>
+  <tr>
+    <td>{{ airsoft.Caliber }}</td>
+  </tr>
+  <tr>
+    <td>{{ airsoft.Joule }}</td>
+  </tr>
+  <tr>
+    <td>{{ airsoft.Gearbox }}</td>
+  </tr>
+  <tr>
+    <td>{{ airsoft.Lenght }}</td>
+  </tr>
+  <tr>
+    <td>{{ airsoft.Weight }}</td>
+  </tr>
+  <tr>
+    <td>{{ airsoft.Battery }}</td>
+  </tr>
+  <tr>
+    <td>{{ airsoft.Derscription }}</td>
+  </tr>
+</table>

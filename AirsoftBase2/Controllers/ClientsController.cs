@@ -33,13 +33,22 @@ namespace AirsoftBase.Controllers
         public ActionResult<Clients> Details(int id)
         {
 
-            var result = ctxt.Clients.FirstOrDefault(c => c.Id == id);
+            var result = ctxt.Clients.SingleOrDefault(c => c.Id == id);
             if (result != null)
             {
                 return (result);
 
             }
             else return NotFound($"Id {id} not found");
+        }
+
+        [HttpPost]
+        public IActionResult AddClient([FromBody] Clients C)
+        {
+            ctxt.Clients.Add(C);
+            ctxt.SaveChanges();
+
+            return Created("", C);
         }
     }
 }

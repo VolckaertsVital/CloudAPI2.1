@@ -1,41 +1,31 @@
-<!--<p *ngIf="!Airsoft"><em>Loading...</em></p>
+<h1 id="tableLabel">Airsofts</h1>
 
+<p>This component demonstrates fetching data from the server.</p>
 
-<table id="products" *ngIf="Airsoft">
-  <tr class="header">
+<p *ngIf="!airsofts"><em>Loading...</em></p>
 
-    <th>Name</th>
-    <th>Brand</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th>Meer details</th>
-    <th></th>
-  </tr>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="airsofts">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Brand</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let airsoft of airsofts">
+      <td>{{ airsoft.Name }}</td>
+      <td>{{ airsoft.Brand }}</td>
+      <td>{{ airsoft.Type }}</td>
+      <td>{{ airsoft.Description }}</td>
+      <td class="nav-item" [routerLinkActive]="['link-active']">
+        <a class="nav-link text-dark" [routerLink]="['/details']">Details</a>
+</td>
+    </tr>
+  </tbody>
+</table>
 
-  <tr>
-
-    <td>{{Airsoft.Name}}</td>
-    <td>{{Airsoft.Brand}}</td>
-    <td>{{Airsoft.Type}}</td>
-    <td>{{Airsoft.Description}}</td>
-    <td>{{Airsoft.Price}}</td>
-    <td>
-      <a asp-controller="airsoft" asp-action="details" asp-route-id="{{Airsoft.Id}}">
-        <button class="button"> Meer info</button>
-      </a>
-    </td>
-    <td>
-      <a asp-controller="airsoft" asp-action="Delete" asp-route-id="{{AirsoftGun.Id}}">
-        <button class="button"> Delete</button>
-      </a>
-    </td>
-
-
-  </tr>
-
-
-</table>-->
 
 <p>Airsoft works</p>
 
