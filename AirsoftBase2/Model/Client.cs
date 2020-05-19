@@ -8,9 +8,16 @@ using System.Threading.Tasks;
 
 namespace AirsoftBase.Model
 {
-    public class Clients
+    public class Client
     {
-        public int Id { get; set; }
+        public Client()
+        {
+            //this.groups = new HashSet<Groups>();
+        }
+
+        [Key]
+        public int ClientId { get; set; }
+        public List<ClientGroup> clientsGroups { get; set; }
 
         [Required(ErrorMessage = "FirstName is Required!")]
         public string FirstName { get; set; }
@@ -21,19 +28,18 @@ namespace AirsoftBase.Model
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "BirthDate is Required!")]
         public DateTime BirthDate { get; set; }
+        public String PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "PostalCode is Required!")]
         public int PostalCode { get; set; }
 
 
-        public int AirsoftID { get; set; }
         public ICollection<AirsoftGun> Airsoft { get; set; }
-
-
-        public int groupID { get; set; }
-
         [JsonIgnore]
-        public ICollection<Groups> group { get; set; }
+        public ICollection<ClientGroup> ClientsGroups { get; set; }
+
+        //[JsonIgnore]
+        //public ICollection<Groups> groups { get; set; }
 
 
     }

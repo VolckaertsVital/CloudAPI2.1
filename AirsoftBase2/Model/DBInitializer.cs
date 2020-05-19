@@ -13,8 +13,40 @@ namespace AirsoftBase.Model
             ctxt.Database.EnsureCreated();
 
             
-            if (!ctxt.Airsofts.Any() && !ctxt.Clients.Any() && !ctxt.Groups.Any())
+            if (!ctxt.Airsofts.Any() && !ctxt.Clients.Any() && !ctxt.Groups.Any() && !ctxt.ClientsGroups.Any())
             {
+                
+                var client1 = new Client()
+                {
+                    FirstName = "patrick",
+                    LastName = "Pauwels",
+                    BirthDate = new DateTime(1994, 03, 06),
+                    PhoneNumber = "+32487654567",
+                    PostalCode = 2980,
+                    Airsoft = null,
+                    //groups = null
+
+                };
+                var client2 = new Client()
+                {
+                    FirstName = "bert",
+                    LastName = "hendricks",
+                    BirthDate = new DateTime(2000, 07, 12),
+                    PhoneNumber = "+32423541560",
+                    PostalCode = 2930,
+                    Airsoft = null
+                   
+
+                };
+
+                var Group1 = new Group()
+                {
+                    GroupName = "U21",
+                    MinAge = 19,
+                    MaxAge = 21,
+                    GameType = "free-for-all",
+                    
+                };
 
                 var air1 = new AirsoftGun()
                 {
@@ -30,7 +62,10 @@ namespace AirsoftBase.Model
                     Weight = 2.8,
                     Battery = false,
                     Description = "This submachine is compact and full metal.",
-                    Price = 480
+                    Price = 480,
+                    clients = client2
+                    
+                    
 
                 };
 
@@ -48,7 +83,8 @@ namespace AirsoftBase.Model
                     Weight = 3.5,
                     Battery = true,
                     Description = "This Rifle is very accurate at long distance.",
-                    Price = 199
+                    Price = 199,
+                    clients = client2
 
                 };
                 var air3 = new AirsoftGun()
@@ -65,7 +101,8 @@ namespace AirsoftBase.Model
                     Weight = 7.5,
                     Battery = true,
                     Description = "This LMG has a verry large magazine size.",
-                    Price = 850
+                    Price = 850,
+                    clients = client2
 
                 };
                 var air4 = new AirsoftGun()
@@ -83,39 +120,14 @@ namespace AirsoftBase.Model
                     Battery = true,
                     Description = "This sniper is a semi-automatic and has a lot of power.",
                     Price = 640,
+                    clients = client1,
                     
                     
+                    
 
                 };
 
-                var client1 = new Clients()
-                {
-                    FirstName = "patrick",
-                    LastName = "Pauwels",
-                    BirthDate = new DateTime(1994, 03, 06),
-                    PostalCode = 2980,
-                    Airsoft = null
-
-
-                };
-                var client2 = new Clients()
-                {
-                    FirstName = "bert",
-                    LastName = "hendricks",
-                    BirthDate = new DateTime(2000, 07, 12),
-                    PostalCode = 2930,
-                    Airsoft = null
-
-                };
-
-                var Group1 = new Groups()
-                {
-                    GroupName = "U21",
-                    MinAge = 19,
-                    MaxAge = 21,
-                    GameType = "free-for-all",
-                    //clients = null
-                };
+                
 
 
 

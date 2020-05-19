@@ -1,8 +1,6 @@
 <h1 id="tableLabel">Airsofts</h1>
 
-<p>This component demonstrates fetching data from the server.</p>
-
-<p *ngIf="!airsofts"><em>Loading...</em></p>
+<p *ngIf="!airsofts"><em>Loading...This component demonstrates fetching data from the server.</em></p>
 
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="airsofts">
   <thead>
@@ -20,12 +18,19 @@
       <td>{{ airsoft.Type }}</td>
       <td>{{ airsoft.Description }}</td>
       <td class="nav-item" [routerLinkActive]="['link-active']">
-        <a class="nav-link text-dark" [routerLink]="['/details']">Details</a>
-</td>
+        <a class="nav-link text-dark" [routerLink]="['/{id}/details']">Details</a>
+      </td>
     </tr>
   </tbody>
 </table>
+<ul class="pagination pagination-sm">
+  <li><a href="/airsoft?page=0">0</a></li>
+  <li><a href="/airsoft?page=1">1</a></li>
+  <li><a href="#">2</a></li>
+  <li><a href="#">3</a></li>
+  <li><a href="#">4</a></li>
+  <li><a href="#">5</a></li>
+</ul>
 
 
-<p>Airsoft works</p>
 

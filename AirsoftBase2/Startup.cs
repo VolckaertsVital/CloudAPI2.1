@@ -9,6 +9,7 @@ using AirsoftBase.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication;
 
+
 namespace AirsoftBase2
 {
     public class Startup
@@ -62,6 +63,7 @@ namespace AirsoftBase2
             app.UseRouting();
 
             app.UseAuthentication();
+           
 
             app.UseAuthorization();
 

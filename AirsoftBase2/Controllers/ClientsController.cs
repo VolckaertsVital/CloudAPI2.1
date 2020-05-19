@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AirsoftBase.Model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AirsoftBase.Controllers
 {
@@ -18,7 +19,7 @@ namespace AirsoftBase.Controllers
         }
 
         [HttpGet]
-        public ActionResult<Clients[]> Get()
+        public ActionResult<Client[]> Get()
         {
             if (this.ctxt.Clients == null)
             {
@@ -30,10 +31,12 @@ namespace AirsoftBase.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public ActionResult<Clients> Details(int id)
+        public ActionResult<Client> Details(int id)
         {
 
-            var result = ctxt.Clients.SingleOrDefault(c => c.Id == id);
+            var result = ctxt.Clients
+                .Include(a => a.Airsoft)
+                .SingleOrDefault(c => c.ClientId == id);
             if (result != null)
             {
                 return (result);
@@ -43,12 +46,20 @@ namespace AirsoftBase.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddClient([FromBody] Clients C)
+        public IActionResult AddClient([FromBody] Client C)
         {
             ctxt.Clients.Add(C);
             ctxt.SaveChanges();
 
             return Created("", C);
+        }
+        [HttpGet]
+        [Route("{id}/airsoft")]
+        public Client getAirsoftsForClient(int Id)
+        {
+            return ctxt.Clients
+                        .Include(c => c.Airsoft)
+                        .SingleOrDefault(c => c.ClientId == Id);
         }
     }
 }

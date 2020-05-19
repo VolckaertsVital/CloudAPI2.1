@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -7,19 +7,27 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./airsoft.component.css']
 })
 export class AirsoftComponent{
+  
 
-  public airsofts: airsofts[];
+  public airsofts: airsoftGun[] = [];
 
-  constructor(http: HttpClient) {
-    http.get<airsofts[]>('https://localhost:44332/api/Airsoft')
-      .subscribe(result => { this.airsofts = result; });
+  constructor(private http: HttpClient) {
+    
   }
 
+  ngOnInit() {
+    this.GetAirsoft();
+    console.log("onInit" + this.airsofts);
+  }
+
+  public GetAirsoft() {
+    return this.http.get<airsoftGun[]>('https://localhost:44332/api/Airsoft').subscribe(result => { this.airsofts = result; console.log(this.airsofts); });
+    
+  }
 }
 
 
-
-interface airsofts{
+interface airsoftGun{
   Brand: string;
   Type: string;
   Name: string;

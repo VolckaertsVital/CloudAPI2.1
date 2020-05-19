@@ -8,9 +8,20 @@ using System.Threading.Tasks;
 
 namespace AirsoftBase2.Model
 {
-    public class Groups
+    public class Group
     {
+
+        /*public Groups()
+        {
+            this.Clients = new HashSet<Clients>();
+        }*/
+
         [Key]
+        public int GroupId { get; set; }
+        [JsonIgnore]
+        public ICollection<ClientGroup> clientsGroups { get; set; }
+
+       
         public string GroupName { get; set; }
 
         public int MinAge { get; set; }
@@ -19,9 +30,6 @@ namespace AirsoftBase2.Model
 
         public string GameType { get; set; }
 
-        
-        public int ClientID { get; set; }
-        //[JsonIgnore]
-        //public ICollection<Clients> clients { get; set; }
+        //public ICollection<Clients> Clients { get; set; }
     }
 }

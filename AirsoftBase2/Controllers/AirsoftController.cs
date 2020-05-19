@@ -22,15 +22,23 @@ namespace AirsoftBase.Controllers
 
         [HttpGet]
 
-        public ActionResult<AirsoftGun[]> Get()
+        public ActionResult<AirsoftGun[]> Get(string Type, string Brand, int? Page, int length = 3)
         {
-            if (this.ctxt.Airsofts == null)
+            IQueryable<AirsoftGun> query = ctxt.Airsofts;
+            if (!string.IsNullOrWhiteSpace(Type))
             {
-                return NotFound("no data found");
-
+                query = query.Where(d => d.Type == Type);
             }
+            if (!string.IsNullOrWhiteSpace(Brand))
+            {
+                query = query.Where(d => d.Brand == Brand);
+            }
+            if (Page.HasValue)
+            { query = query.Skip(Page.Value * length); }
 
-            return this.ctxt.Airsofts.ToArray();
+            query = query.Take(length);
+
+            return query.ToArray();
         }
 
 
@@ -101,6 +109,13 @@ namespace AirsoftBase.Controllers
             await ctxt.SaveChangesAsync();
 
             return result;
+        }
+        [Route("{id}/client")]
+        public Client getclientsForairsoft(int Id)
+        {
+            return ctxt.Airsofts
+                        .Include(c => c.clients)
+                        .SingleOrDefault(c => c.Id == Id).clients;
         }
 
 

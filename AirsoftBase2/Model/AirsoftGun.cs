@@ -8,6 +8,7 @@ namespace AirsoftBase
 {
     public class AirsoftGun
     {
+        [Key]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Brand is Required!")]
@@ -54,7 +55,7 @@ namespace AirsoftBase
         public double Price { get; set; }
 
         [JsonIgnore]
-        public Clients clients { get; set; }
+        public Client clients { get; set; }
 
 
     }

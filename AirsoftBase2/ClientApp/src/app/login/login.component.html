@@ -1,26 +1,63 @@
-<div class="background">
-
-  <div class="login">
-   
-    <div class="local">
-      <h1>Local login</h1>
-      <hr />
-      <form action="">
-        <p class="emailText">Email</p>
-        <input class="email" type="text">
-        <p class="passwordText">Password</p>
-        <input class="password" type="password">
-        <br>
-        <button class="loginButton" type="submit" label="login" [routerLink]="['/home']">Login</button>
-      </form>
-    </div>
-    <div class="external">
-      <h1>External login</h1>
-      <hr />
-      <h5>{{resultMessage}}</h5>
-      <button (click)="logInWithGoogle('Google')"> Google Login </button>
-      <button (click)="signOut()" class="btn btn-success">Sign Out</button>
+<div class="container" style="padding-top:60px;">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card-group">
+        <div class="card p-4">
+          <div class="card-body">
+            <form name="form">
+              
+             
+              <div style="padding-top: 20px;" class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="icon-user"></i>
+                  </span>
+                </div>
+                <input type="text" name="UserName"
+                       class="form-control sty1" placeholder="Email"
+                       required>
+              </div>
+              <div class="input-group mb-4">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="icon-lock"></i>
+                  </span>
+                </div>
+                <input type="password" name="Passward"
+                       class="form-control" placeholder="Password">
+              </div>
+              <div>
+                <p style="color:#E92626;font-size:20px;
+                                 font-weight:normal" Class="success" align="left">
+                  {{errorMessage}}
+                </p>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <button type="submit" class="btn btn-primary px-4">
+                    Login
+                  </button>
+                </div>
+                <div class="col-6 text-right">
+                  <button type="button" class="btn btn-link px-0">
+                    Forgot password?
+                  </button>
+                </div>
+              </div>
+            </form>
+            <hr style="border-top: 1px solid #eee;">
+            <div class="row">
+              <div class="col-6 text-right">
+                <button (click)="socialSignIn('google')"
+                       class="btn btn-block btn-success">
+                  Login with Google
+                </button>
+                <button type="button" (click)="signOut()" class="btn btn-primary">Sign Out</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
 </div>
