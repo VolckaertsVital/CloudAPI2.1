@@ -1,6 +1,8 @@
 ﻿using AirsoftBase.Model;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace AirsoftBase
 {
@@ -51,7 +53,8 @@ namespace AirsoftBase
         [Range(0, 5000, ErrorMessage = "wrong price!")]
         public double Price { get; set; }
 
-        //public Clients client { get; set; }
+        [JsonIgnore]
+        public Clients clients { get; set; }
 
 
     }

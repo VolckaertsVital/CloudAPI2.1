@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
+import { SocialLoginModule, AuthService, GoogleLoginProvider } from 'angular-6-social-login'; 
 
 @Component({
   selector: 'app-nav-menu',
   templateUrl: './nav-menu.component.html',
-  styleUrls: ['./nav-menu.component.css']
+  styleUrls: ['./nav-menu.component.css'],
+  providers: [SocialLoginModule, AuthService]
 })
 export class NavMenuComponent {
+
+  constructor(private _socialAuthServ: AuthService) { }
+
   isExpanded = false;
 
   collapse() {
@@ -14,5 +19,10 @@ export class NavMenuComponent {
 
   toggle() {
     this.isExpanded = !this.isExpanded;
+  }
+
+  signOut(): void {
+    this._socialAuthServ.signOut();
+    console.log('User has signed out');
   }
 }

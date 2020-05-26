@@ -1,41 +1,47 @@
-<!--<p *ngIf="!Airsoft"><em>Loading...</em></p>
+<h1 id="tableLabel">Airsofts</h1>
+
+<p *ngIf="!airsofts"><em>Loading...</em></p>
+
+Order by: <select ng-model="sortColum">
+  <option value="name">Name ASC</option>
+  <option value="-name">Name DESC</option>
+  <option value="brand">Brand ASC</option>
+  <option value="-brand">Brand DESC</option>
+  <option value="type">Type ASC</option>
+  <option value="-type">Type DESC</option>
+
+</select>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="airsofts">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Brand</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let airsoft of airsofts">
+      <td>{{ airsoft.name }}</td>
+      <td>{{ airsoft.brand }}</td>
+      <td>{{ airsoft.type }}</td>
+      <td>{{ airsoft.description }}</td>
+      <td class="nav-item" [routerLinkActive]="['link-active']">
+        <a class="nav-link text-dark" [routerLink]="[airsoft.id + '/details']">Details</a>
+      </td>
+    </tr>
+  </tbody>
+  <ul class="pagination pagination-sm">
+    <li><a href="/airsoft?page=0">0</a></li>
+    <li><a href="/airsoft?page=1">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+  </ul>
+</table>
 
 
-<table id="products" *ngIf="Airsoft">
-  <tr class="header">
 
-    <th>Name</th>
-    <th>Brand</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th>Meer details</th>
-    <th></th>
-  </tr>
-
-  <tr>
-
-    <td>{{Airsoft.Name}}</td>
-    <td>{{Airsoft.Brand}}</td>
-    <td>{{Airsoft.Type}}</td>
-    <td>{{Airsoft.Description}}</td>
-    <td>{{Airsoft.Price}}</td>
-    <td>
-      <a asp-controller="airsoft" asp-action="details" asp-route-id="{{Airsoft.Id}}">
-        <button class="button"> Meer info</button>
-      </a>
-    </td>
-    <td>
-      <a asp-controller="airsoft" asp-action="Delete" asp-route-id="{{AirsoftGun.Id}}">
-        <button class="button"> Delete</button>
-      </a>
-    </td>
-
-
-  </tr>
-
-
-</table>-->
-
-<p>Airsoft works</p>
 

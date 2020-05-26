@@ -1,0 +1,81 @@
+<div class="container" style="padding-top:60px;">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card-group">
+        <div class="card p-4">
+          <div class="card-body">
+            <form name="form">
+
+              <h3>Sign Up</h3>
+
+              <div style="padding-top: 20px;" class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="material-icons prefix">account_circle</i>
+                  </span>
+                </div>
+                <input type="text" #FirstName="ngModel" [(ngModel)]="user.FirstName" name="FirstName"
+                       class="form-control sty1" placeholder="First Name"
+                       required>
+              </div>
+              <div style="padding-top: 20px;" class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="material-icons prefix">account_circle</i>
+                  </span>
+                </div>
+                <input type="text" #LastName="ngModel" [(ngModel)]="user.LastName" name="LastName"
+                       class="form-control sty1" placeholder="Last Name"
+                       required>
+              </div>
+              <div style="padding-top: 20px;" class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="material-icons prefix">portrait</i>
+                  </span>
+                </div>
+                <input type="text" #UserName="ngModel" [(ngModel)]="user.UserName" name="UserName"
+                       class="form-control sty1" placeholder="User Name"
+                       required>
+              </div>
+              <div class="input-group mb-4">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="material-icons prefix">email</i>
+                  </span>
+                </div>
+                <input type="text" #Email="ngModel" [(ngModel)]="user.Email" name="Email"
+                       class="form-control" placeholder="Email" required pattern="emailPattern">
+              </div>
+              <div class="input-group mb-4">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="material-icons prefix">vpn_key</i>
+                  </span>
+                </div>
+                <input type="password" #Password="ngModel" [(ngModel)]="user.Password" name="Password"
+                       class="form-control" placeholder="Password" required minlenght="3" />
+              </div>
+              <div>
+                <p style="color:#E92626;font-size:20px;
+                                 font-weight:normal" Class="success" align="left">
+                </p>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <button type="submit" [disabled]="!SignUpForm.valid" class="btn btn-primary px-4">
+                    Sign Up
+                  </button>
+                </div>
+              </div>
+            </form>
+            <hr style="border-top: 1px solid #eee;">
+           
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

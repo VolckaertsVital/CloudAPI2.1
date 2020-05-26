@@ -1,23 +1,29 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject,OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { freeapi } from '../Services/freeapi.service';
+import { posts } from '../classes/posts';
 
 @Component({
   selector: 'app-fetch-data',
   templateUrl: './fetch-data.component.html'
 })
 export class FetchDataComponent {
-  public forecasts: WeatherForecast[];
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<WeatherForecast[]>(baseUrl + 'weatherforecast').subscribe(result => {
-      this.forecasts = result;
-    }, error => console.error(error));
+  listPosts: posts[];
+
+  constructor(private _freeApi: freeapi) {
+  }
+
+  ngOnInit() {
+    this._freeApi.getposts().subscribe(
+      data => {
+        this.listPosts = data; console.log(this.listPosts);
+      }
+    );
+
   }
 }
 
-interface WeatherForecast {
-  date: string;
-  temperatureC: number;
-  temperatureF: number;
-  summary: string;
-}
+  
+
+

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AirsoftBase2.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,7 +11,9 @@ namespace AirsoftBase.Model
         public static void Init(Context ctxt)
         {
             ctxt.Database.EnsureCreated();
-            if (!ctxt.Airsofts.Any())
+
+            
+            if (!ctxt.Airsofts.Any() && !ctxt.Clients.Any() && !ctxt.Groups.Any())
             {
 
                 var air1 = new AirsoftGun()
@@ -79,39 +82,58 @@ namespace AirsoftBase.Model
                     Weight = 3,
                     Battery = true,
                     Description = "This sniper is a semi-automatic and has a lot of power.",
-                    Price = 640
+                    Price = 640,
+                    
+                    
 
                 };
-
-                ctxt.Airsofts.Add(air1);
-                ctxt.Airsofts.Add(air2);
-                ctxt.Airsofts.Add(air3);
-                ctxt.Airsofts.Add(air4);
-                ctxt.SaveChanges();
-            };
-
-            if (!ctxt.Clients.Any())
-            {
 
                 var client1 = new Clients()
                 {
                     FirstName = "patrick",
                     LastName = "Pauwels",
                     BirthDate = new DateTime(1994, 03, 06),
-                    PostalCode = 2980
+                    PostalCode = 2980,
+                    Airsoft = null
+
+
                 };
                 var client2 = new Clients()
                 {
                     FirstName = "bert",
                     LastName = "hendricks",
                     BirthDate = new DateTime(2000, 07, 12),
-                    PostalCode = 2930
+                    PostalCode = 2930,
+                    Airsoft = null
+
                 };
+
+                var Group1 = new Groups()
+                {
+                    GroupName = "U21",
+                    MinAge = 19,
+                    MaxAge = 21,
+                    GameType = "free-for-all",
+                    //clients = null
+                };
+
+
 
                 ctxt.Clients.Add(client1);
                 ctxt.Clients.Add(client2);
+                
+
+                ctxt.Airsofts.Add(air1);
+                ctxt.Airsofts.Add(air2);
+                ctxt.Airsofts.Add(air3);
+                ctxt.Airsofts.Add(air4);
+
+                ctxt.Groups.Add(Group1);
+
                 ctxt.SaveChanges();
             };
+
+            
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AirsoftBase2.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,7 @@ namespace AirsoftBase.Model
 
         public DbSet<AirsoftGun> Airsofts { get; set; }
         public DbSet<Clients> Clients { get; set; }
+
+        public DbSet<Groups> Groups { get; set; }
     }
 }
