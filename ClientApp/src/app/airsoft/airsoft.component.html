@@ -11,15 +11,19 @@ Order by: <select ng-model="sortColum">
   <option value="-type">Type DESC</option>
 
 </select>
+<p>{{message}}</p>
 
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="airsofts">
   <thead>
-    <tr>
-      <th>Name</th>
-      <th>Brand</th>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
+  <tr class="nav-item" [routerLinkActive]="['link-active']">
+    <a class="btn btn-sm text-white btn-info" [routerLink]="['/Add' ]">Add Airsoft</a>
+  </tr>
+  <tr>
+    <th>Name</th>
+    <th>Brand</th>
+    <th>Type</th>
+    <th>Description</th>
+  </tr>
   </thead>
   <tbody>
     <tr *ngFor="let airsoft of airsofts">
@@ -28,7 +32,13 @@ Order by: <select ng-model="sortColum">
       <td>{{ airsoft.type }}</td>
       <td>{{ airsoft.description }}</td>
       <td class="nav-item" [routerLinkActive]="['link-active']">
-        <a class="nav-link text-dark" [routerLink]="[airsoft.id + '/details']">Details</a>
+        <a class="btn btn-sm text-white btn-success" (click)="edit(airsoft.id)">Edit</a>
+      </td>
+      <td class="nav-item" [routerLinkActive]="['link-active']" (click)="delete(airsoft.id)">
+        <a class="btn btn-sm text-white btn-danger">Delete</a>
+      </td>
+      <td class="nav-item" [routerLinkActive]="['link-active']">
+        <a class="btn btn-sm text-white btn-primary" [routerLink]="['/details/' + airsoft.id ]">Details</a>
       </td>
     </tr>
   </tbody>

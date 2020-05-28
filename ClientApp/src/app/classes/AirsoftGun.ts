@@ -3,6 +3,7 @@
 
     export class AirsoftGun
     {
+      Id: number;
       Brand: string;
       Type: string;
       Name: string;

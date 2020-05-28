@@ -1,0 +1,82 @@
+<div class="container" style="padding-top:60px;">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card-group">
+        <div class="card p-4">
+          <div class="card-body">
+            <form name="form">
+
+              <h3>Add Airsoft</h3>
+
+              <div style="padding-top: 20px;" class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="material-icons prefix">looks_one</i>
+                  </span>
+                </div>
+                <input type="text" #Name="ngModel" [(ngModel)]="air.Name" name="Name"
+                       class="form-control sty1" placeholder="Name"
+                       required>
+              </div>
+              <div style="padding-top: 20px;" class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="material-icons prefix">looks_two</i>
+                  </span>
+                </div>
+                <input type="text" #Brand="ngModel" [(ngModel)]="air.Brand" name="Brand"
+                       class="form-control sty1" placeholder="Brand"
+                       required>
+              </div>
+              <div style="padding-top: 20px;" class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="material-icons prefix">looks_3</i>
+                  </span>
+                </div>
+                <input type="text" #Type="ngModel" [(ngModel)]="air.Type" name="Type"
+                       class="form-control sty1" placeholder="Type"
+                       required>
+              </div>
+              <div class="input-group mb-4">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="material-icons prefix">looks_4</i>
+                  </span>
+                </div>
+                <input type="text"  #Caliber="ngModel" [(ngModel)]="air.Caliber" name="Caliber"
+                       class="form-control" placeholder="Caliber" required pattern="emailPattern">
+              </div>
+
+              <div class="input-group mb-4">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="material-icons prefix">looks_5</i>
+                  </span>
+                </div>
+                <input type="text" #Description="ngModel" [(ngModel)]="air.Description" name="Description"
+                       class="form-control" placeholder="Description" required minlenght="3" />
+              </div>
+              <div>
+                <p style="color:#E92626;font-size:20px;
+                                 font-weight:normal" Class="success" align="left">
+                </p>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <button type="submit"  class="btn btn-primary px-4" (click)="edit(air)">
+                    Add
+                  </button>
+                </div>
+              </div>
+            </form>
+            <hr style="border-top: 1px solid #eee;">
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

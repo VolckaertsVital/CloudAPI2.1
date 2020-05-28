@@ -16,8 +16,11 @@ import { LoginComponent } from './login/login.component';
 import { NgxPaginationModule } from 'ngx-pagination'
 import { freeapi } from './Services/freeapi.service';
 import { Airsoft } from './Services/Airsoft.service';
+import { Jwt } from './classes/Jwt';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { appRoutes } from './routes';
+import { AddComponent } from './add/add.component';
+
 
 
 
@@ -46,7 +49,9 @@ export function provideConfig() {
       AirsoftComponent,
       DetailsComponent,
       LoginComponent,
-      SignUpComponent
+      SignUpComponent,
+      AddComponent
+      
     ],
     imports: [
       BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -58,7 +63,7 @@ export function provideConfig() {
     ],
     providers: [{
       provide: AuthServiceConfig, useFactory: provideConfig
-    }, freeapi, Airsoft],
+    }, freeapi, Airsoft, Jwt],
     bootstrap: [AppComponent]
 
 

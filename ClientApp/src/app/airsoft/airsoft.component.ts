@@ -9,7 +9,8 @@ import { Airsoft } from '../Services/Airsoft.service';
   styleUrls: ['./airsoft.component.css']
 })
 export class AirsoftComponent{
-  
+  id: any;
+  message:string
 
   airsofts: AirsoftGun[];
 
@@ -25,6 +26,16 @@ export class AirsoftComponent{
     );
 
   }
+  delete(id) {
+    this._airsoft.deleteId(id).subscribe(
+      data => {
+        this.message = "Resource deleted succesfully";
+      }
+
+    )
+  };
+  
+
 
   
 }

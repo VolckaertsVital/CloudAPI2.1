@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SocialLoginModule, AuthService, GoogleLoginProvider } from 'angular-6-social-login'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-menu',
@@ -9,7 +10,7 @@ import { SocialLoginModule, AuthService, GoogleLoginProvider } from 'angular-6-s
 })
 export class NavMenuComponent {
 
-  constructor(private _socialAuthServ: AuthService) { }
+  constructor(private _socialAuthServ: AuthService, public router: Router) { }
 
   isExpanded = false;
 
@@ -23,6 +24,7 @@ export class NavMenuComponent {
 
   signOut(): void {
     this._socialAuthServ.signOut();
+    this.router.navigate(['/']);
     console.log('User has signed out');
   }
 }
